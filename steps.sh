@@ -78,7 +78,7 @@ az servicebus topic subscription rule create \
 --topic-name $TOPIC_NAME \
 --subscription-name $SUBSCRIPTION_NAME \
 --name "gotham-filter" \
---filter-sql-expression "city = 'Gotham'"
+--filter-sql-expression "city = 'gotham'"
 
 
 # Send messages to a topic

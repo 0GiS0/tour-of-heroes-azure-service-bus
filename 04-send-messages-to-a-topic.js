@@ -1,4 +1,4 @@
-import { ServiceBusClient, delay } from "@azure/service-bus";
+import { ServiceBusClient } from "@azure/service-bus";
 import boxen from 'boxen';
 import chalk from "chalk";
 
