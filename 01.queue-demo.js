@@ -34,6 +34,8 @@ async function main() {
             timeToLive: 2 * 60 * 1000 // expires in 2 minutes
         });
 
+        console.log(chalk.bgBlue.white.bold(`Sent a single message to the queue 💌: ${process.env.QUEUE_NAME}`));
+
         // Close the sender
         await sender.close();
 

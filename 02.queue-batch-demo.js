@@ -38,7 +38,7 @@ async function main() {
 
         for (let i = 0; i < messages.length; i++) {
 
-            console.log(chalk.bgBlue.white.bold(`Sending message: ${messages[i].body}`));
+            console.log(`Sending message: ${messages[i].body}`);
 
             //try to add the message to the batch
             if (!batch.tryAddMessage(messages[i])) {
@@ -60,7 +60,7 @@ async function main() {
         // Send the last created batch of messages to the queue
         await sender.sendMessages(batch);
 
-        console.log(chalk.bgGreenBright.white(`Sent a batch of messages to the queue 💌: ${process.env.QUEUE_NAME}`));
+        console.log(`Sent a batch of messages to the queue 💌: ${process.env.QUEUE_NAME}`);
 
         // Close the sender
         await sender.close();
