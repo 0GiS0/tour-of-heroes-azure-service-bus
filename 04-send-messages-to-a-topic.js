@@ -21,8 +21,8 @@ const messages = [
     { body: "Superman is Clark Kent" },
     { body: "Arrow is Oliver Queen" },
     { body: "Flash is Barry Allen" },
-    { body: "Catwoman is Selina Kyle", city: "gotham" },
-    { body: "Bruce Wayne is Batman", city: "gotham" }
+    { body: "Catwoman is Selina Kyle", subject: "gotham" },
+    { body: "Bruce Wayne is Batman", subject: "gotham" }
 ];
 
 async function main() {
