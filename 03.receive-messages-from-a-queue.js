@@ -1,4 +1,22 @@
-const { delay, ServiceBusClient, ServiceBusMessage } = require("@azure/service-bus");
+import { ServiceBusClient, delay } from "@azure/service-bus";
+import boxen from 'boxen';
+import chalk from "chalk";
+
+const boxenOptions = {
+    padding: 1,
+    margin: 1,
+    borderStyle: 'round',
+    borderColor: 'green',
+    backgroundColor: '#555555'
+};
+
+const greeting = chalk.yellow('Azure Service Bus Queue Demo: Received messages to a queue');
+
+console.log(boxen(greeting, boxenOptions));
+
+console.log(`Connection string 🤫:` + `${process.env.CONN_STRING}`);
+console.log(`Queue name 📪: ${process.env.QUEUE_NAME}`);
+
 
 async function main() {
     // create a Service Bus client using the connection string to the Service Bus namespace
@@ -9,7 +27,7 @@ async function main() {
 
     // function to handle messages
     const myMessageHandler = async (messageReceived) => {
-        console.log(`Received message: ${messageReceived.body}`);
+        console.log(`Received message 📥: ${messageReceived.body}`);
     };
 
     // function to handle any errors
@@ -33,4 +51,4 @@ async function main() {
 main().catch((err) => {
     console.log("Error occurred: ", err);
     process.exit(1);
- });
+});
