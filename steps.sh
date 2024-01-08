@@ -45,5 +45,44 @@ az servicebus queue show \
 # Receive messages from a queue
 CONN_STRING=$CONNECTION_STRING QUEUE_NAME=$QUEUE_NAME node 03.receive-messages-from-a-queue.js
 
+# Create a topic
+TOPIC_NAME="heroes-topic"
+
+az servicebus topic create \
+--resource-group $RESOURCE_GROUP \
+--namespace-name $RESOURCE_GROUP \
+--name $TOPIC_NAME
+
+# Create a subscription 
+SUBSCRIPTION_NAME="simple-subscription"
+
+az servicebus topic subscription create \
+--resource-group $RESOURCE_GROUP \
+--namespace-name $RESOURCE_GROUP \
+--topic-name $TOPIC_NAME \
+--name $SUBSCRIPTION_NAME
+
+# Create a subscription with a filter
+SUBSCRIPTION_NAME="gotham-subscription"
+
+az servicebus topic subscription create \
+--resource-group $RESOURCE_GROUP \
+--namespace-name $RESOURCE_GROUP \
+--topic-name $TOPIC_NAME \
+--name $SUBSCRIPTION_NAME
+
+# Create a filter on the gotham subscription
+az servicebus topic subscription rule create \
+--resource-group $RESOURCE_GROUP \
+--namespace-name $RESOURCE_GROUP \
+--topic-name $TOPIC_NAME \
+--subscription-name $SUBSCRIPTION_NAME \
+--name "gotham-filter" \
+--filter-sql-expression "city = 'Gotham'"
+
+
+# Send messages to a topic
+CONN_STRING=$CONNECTION_STRING TOPIC_NAME=$TOPIC_NAME node 04-send-messages-to-a-topic.js
+
 
 # More examples here: https://learn.microsoft.com/en-us/samples/azure/azure-sdk-for-js/service-bus-javascript/
