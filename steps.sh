@@ -42,7 +42,6 @@ az servicebus queue show \
 --query messageCount \
 --output tsv
 
-
 # Receive messages from a queue
 CONN_STRING=$CONNECTION_STRING QUEUE_NAME=$QUEUE_NAME node 03.receive-messages-from-a-queue.js
 

@@ -1,9 +1,23 @@
-const { ServiceBusClient } = require("@azure/service-bus");
+import { ServiceBusClient } from "@azure/service-bus";
+import boxen from 'boxen';
+
+const boxenOptions = {
+    padding: 1,
+    margin: 1,
+    borderStyle: 'round',
+    borderColor: 'green',
+    backgroundColor: '#555555'
+};
+
 
 import('chalk').then(chalk => {
 
-    console.log(chalk.default.bgBlue.white.bold(`Connection string:`) + `${process.env.CONN_STRING}`);
-    console.log(chalk.default.bgBlue.white.bold(`Queue name: ${process.env.QUEUE_NAME}`));    
+    const greeting = chalk.default.yellow('Welcome to the Azure Service Bus Queue Demo!');
+
+    console.log(boxen(greeting, boxenOptions));
+
+    console.log(`Connection string 🤫:` + `${process.env.CONN_STRING}`);
+    console.log(`Queue name 📪: ${process.env.QUEUE_NAME}`);
 
     async function main() {
 
@@ -15,13 +29,13 @@ import('chalk').then(chalk => {
 
             // Send a single message
             await sender.sendMessages({
-                contentType: "application/json",                
+                contentType: "application/json",
                 body: "Hello World",
                 subject: "My favorite hero",
                 body: "Batman is Bruce Wayne",
                 timeToLive: 2 * 60 * 1000 // expires in 2 minutes
             });
-          
+
             // Close the sender
             await sender.close();
 
