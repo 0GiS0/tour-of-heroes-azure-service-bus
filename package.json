@@ -1,0 +1,16 @@
+{
+  "name": "tour-of-heroes-azure-service-bus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "queue-demo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@azure/service-bus": "^7.9.3",
+    "chalk": "^5.3.0"
+  }
+}
