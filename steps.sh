@@ -27,8 +27,11 @@ authorization-rule keys list \
 --query primaryConnectionString \
 --output tsv)
 
+
+# Send a single message
 CONN_STRING=$CONNECTION_STRING QUEUE_NAME=$QUEUE_NAME node 01.queue-demo.js
 
+# Send a batch of messages
 CONN_STRING=$CONNECTION_STRING QUEUE_NAME=$QUEUE_NAME node 02.queue-batch-demo.js
 
 # Get number of messages
@@ -39,3 +42,9 @@ az servicebus queue show \
 --query messageCount \
 --output tsv
 
+
+# Receive messages from a queue
+CONN_STRING=$CONNECTION_STRING QUEUE_NAME=$QUEUE_NAME node 03.receive-messages-from-a-queue.js
+
+
+# More examples here: https://learn.microsoft.com/en-us/samples/azure/azure-sdk-for-js/service-bus-javascript/
