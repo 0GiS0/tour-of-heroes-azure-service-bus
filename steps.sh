@@ -106,4 +106,23 @@ az servicebus topic subscription rule create \
 # Send messages to a topic
 node 04-send-messages-to-a-topic.js
 
+# Schedule a message
+
+# AMQP
+
+# Get policy key
+PRIMARY_KEY=$(az servicebus namespace authorization-rule keys list \
+--resource-group $RESOURCE_GROUP \
+--namespace-name $RESOURCE_GROUP \
+--name RootManageSharedAccessKey \
+--query primaryKey \
+--output tsv)
+
+echo "AMQP_HOST=$RESOURCE_GROUP.servicebus.windows.net" >> .env
+echo "AMQP_PASSWORD=$PRIMARY_KEY" >> .env
+echo "AMQP_PORT=5671" >> .env
+echo "AMQP_USER=RootManageSharedAccessKey" >> .env
+
+node 07-amqp.js
+
 # More examples here: https://learn.microsoft.com/en-us/samples/azure/azure-sdk-for-js/service-bus-javascript/
