@@ -10,6 +10,9 @@ const boxenOptions = {
     backgroundColor: '#555555'
 };
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 const greeting = chalk.yellow('Azure Service Bus Topic Demo: Send messages to a topic');
 
 console.log(boxen(greeting, boxenOptions));

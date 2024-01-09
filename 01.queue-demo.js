@@ -1,6 +1,9 @@
 import { ServiceBusClient } from "@azure/service-bus";
 import boxen from 'boxen';
 import chalk from "chalk";
+import dotenv from 'dotenv';
+dotenv.config();
+
 
 const boxenOptions = {
     padding: 1,
@@ -64,7 +67,7 @@ async function main() {
 
 // call the main function
 main().catch((err) => {
-    console.log(chalk.default.bgRed.white.bold(`Error occurred: ${err}`));
+    console.log(chalk.bgRed.white.bold(`Error occurred: ${err}`));
     process.exit(1);
 });
 

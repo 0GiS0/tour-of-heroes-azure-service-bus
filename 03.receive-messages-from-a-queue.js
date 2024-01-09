@@ -10,6 +10,10 @@ const boxenOptions = {
     backgroundColor: '#555555'
 };
 
+import dotenv from 'dotenv';
+dotenv.config();
+
+
 const greeting = chalk.yellow('Azure Service Bus Queue Demo: Received messages to a queue');
 
 console.log(boxen(greeting, boxenOptions));

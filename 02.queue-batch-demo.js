@@ -1,6 +1,8 @@
 import { ServiceBusClient } from "@azure/service-bus";
 import boxen from 'boxen';
 import chalk from "chalk";
+import dotenv from 'dotenv';
+dotenv.config();
 
 const boxenOptions = {
     padding: 1,

@@ -2,6 +2,7 @@
 RESOURCE_GROUP="service-bus-demos"
 LOCATION="westeurope"
 QUEUE_NAME="heroes-queue"
+TOPIC_NAME="heroes-topic"
 
 # Create resource group
 az group create --name $RESOURCE_GROUP --location $LOCATION
@@ -27,12 +28,17 @@ authorization-rule keys list \
 --query primaryConnectionString \
 --output tsv)
 
+# Set variables in .env file
+echo "CONN_STRING=$CONNECTION_STRING" > .env
+echo "QUEUE_NAME=$QUEUE_NAME" >> .env
+echo "TOPIC_NAME=$TOPIC_NAME" >> .env
+
 
 # Send a single message
-CONN_STRING=$CONNECTION_STRING QUEUE_NAME=$QUEUE_NAME node 01.queue-demo.js
+node 01.queue-demo.js
 
 # Send a batch of messages
-CONN_STRING=$CONNECTION_STRING QUEUE_NAME=$QUEUE_NAME node 02.queue-batch-demo.js
+node 02.queue-batch-demo.js
 
 # Get number of messages
 az servicebus queue show \
@@ -43,11 +49,9 @@ az servicebus queue show \
 --output tsv
 
 # Receive messages from a queue
-CONN_STRING=$CONNECTION_STRING QUEUE_NAME=$QUEUE_NAME node 03.receive-messages-from-a-queue.js
+node 03.receive-messages-from-a-queue.js
 
 # Create a topic
-TOPIC_NAME="heroes-topic"
-
 az servicebus topic create \
 --resource-group $RESOURCE_GROUP \
 --namespace-name $RESOURCE_GROUP \
@@ -100,9 +104,6 @@ az servicebus topic subscription rule create \
 
 
 # Send messages to a topic
-CONN_STRING=$CONNECTION_STRING TOPIC_NAME=$TOPIC_NAME node 04-send-messages-to-a-topic.js
-
-
-
+node 04-send-messages-to-a-topic.js
 
 # More examples here: https://learn.microsoft.com/en-us/samples/azure/azure-sdk-for-js/service-bus-javascript/
