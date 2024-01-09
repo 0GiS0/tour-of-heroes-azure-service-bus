@@ -25,6 +25,23 @@ async function main() {
 
     try {
 
+        // ServiceBusMessage properties
+        // {
+        //     body: this.body,
+        //     contentType: this.contentType,
+        //     correlationId: this.correlationId,
+        //     subject: this.subject,
+        //     messageId: this.messageId,
+        //     partitionKey: this.partitionKey,
+        //     replyTo: this.replyTo,
+        //     replyToSessionId: this.replyToSessionId,
+        //     scheduledEnqueueTimeUtc: this.scheduledEnqueueTimeUtc,
+        //     sessionId: this.sessionId,
+        //     timeToLive: this.timeToLive,
+        //     to: this.to,
+        //     applicationProperties: this.applicationProperties,
+        // }
+
         // Send a single message
         await sender.sendMessages({
             contentType: "application/json",

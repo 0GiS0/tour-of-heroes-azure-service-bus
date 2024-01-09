@@ -21,8 +21,8 @@ const messages = [
     { body: "Superman is Clark Kent" },
     { body: "Arrow is Oliver Queen" },
     { body: "Flash is Barry Allen" },
-    { body: "Catwoman is Selina Kyle", subject: "gotham" },
-    { body: "Bruce Wayne is Batman", subject: "gotham" }
+    { body: "Catwoman is Selina Kyle", applicationProperties: { city: "gotham" } },
+    { body: "Bruce Wayne is Batman", applicationProperties: { city: "gotham" } }
 ];
 
 async function main() {
@@ -42,6 +42,7 @@ async function main() {
         for (let i = 0; i < messages.length; i++) {
             // for each message in the array
 
+            console.log(`Trying to add message to the batch: ${JSON.stringify(messages[i])}`);
             // try to add the message to the batch
             if (!batch.tryAddMessage(messages[i])) {
                 // if it fails to add the message to the current batch
