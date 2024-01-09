@@ -25,7 +25,7 @@ async function main() {
 
     try {
 
-        // ServiceBusMessage properties
+        // ServiceBusMessage properties: https://learn.microsoft.com/en-us/javascript/api/@azure/service-bus/servicebusmessage?view=azure-node-latest
         // {
         //     body: this.body,
         //     contentType: this.contentType,

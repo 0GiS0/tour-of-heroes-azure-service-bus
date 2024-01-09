@@ -103,4 +103,6 @@ az servicebus topic subscription rule create \
 CONN_STRING=$CONNECTION_STRING TOPIC_NAME=$TOPIC_NAME node 04-send-messages-to-a-topic.js
 
 
+
+
 # More examples here: https://learn.microsoft.com/en-us/samples/azure/azure-sdk-for-js/service-bus-javascript/
