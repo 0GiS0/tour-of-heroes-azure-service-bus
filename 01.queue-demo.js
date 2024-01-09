@@ -28,7 +28,8 @@ async function main() {
 
     try {
 
-        // ServiceBusMessage properties: https://learn.microsoft.com/en-us/javascript/api/@azure/service-bus/servicebusmessage?view=azure-node-latest
+        // Messages, payloads and serializations: https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messages-payloads
+        // ServiceBusMessage properties: https://learn.microsoft.com/en-us/javascript/api/@azure/service-bus/servicebusmessage?view=azure-node-latest        
         // {
         //     body: this.body,
         //     contentType: this.contentType,
