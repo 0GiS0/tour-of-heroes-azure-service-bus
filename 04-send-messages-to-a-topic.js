@@ -18,7 +18,7 @@ console.log(`Connection string 🤫:` + `${process.env.CONN_STRING}`);
 console.log(`Topic name 📪: ${process.env.TOPIC_NAME}`);
 
 const messages = [
-    { body: "Superman is Clark Kent" },
+    { body: "Superman is Clark Kent", applicationProperties: { city: "smallville" } },
     { body: "Arrow is Oliver Queen" },
     { body: "Flash is Barry Allen" },
     { body: "Catwoman is Selina Kyle", applicationProperties: { city: "gotham" } },

@@ -80,6 +80,24 @@ az servicebus topic subscription rule create \
 --name "gotham-filter" \
 --filter-sql-expression "city = 'gotham'"
 
+SUBSCRIPTION_NAME="smallville-subscription"
+
+az servicebus topic subscription create \
+--resource-group $RESOURCE_GROUP \
+--namespace-name $RESOURCE_GROUP \
+--topic-name $TOPIC_NAME \
+--name $SUBSCRIPTION_NAME
+
+# Filter with an action
+az servicebus topic subscription rule create \
+--resource-group $RESOURCE_GROUP \
+--namespace-name $RESOURCE_GROUP \
+--topic-name $TOPIC_NAME \
+--subscription-name $SUBSCRIPTION_NAME \
+--name "smallville-filter-action" \
+--filter-sql-expression "city = 'smallville'" \
+--action-sql-expression "set city = 'Smallville, Kansas'"
+
 
 # Send messages to a topic
 CONN_STRING=$CONNECTION_STRING TOPIC_NAME=$TOPIC_NAME node 04-send-messages-to-a-topic.js
