@@ -126,3 +126,6 @@ echo "AMQP_USER=RootManageSharedAccessKey" >> .env
 node 07-amqp.js
 
 # More examples here: https://learn.microsoft.com/en-us/samples/azure/azure-sdk-for-js/service-bus-javascript/
+
+# Clean up
+az group delete --name $RESOURCE_GROUP --yes --no-wait
