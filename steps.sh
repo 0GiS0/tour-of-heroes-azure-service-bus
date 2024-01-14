@@ -17,7 +17,9 @@ az servicebus namespace create \
 az servicebus queue create \
 --resource-group $RESOURCE_GROUP \
 --namespace-name $RESOURCE_GROUP \
---name $QUEUE_NAME
+--name $QUEUE_NAME \
+--enable-dead-lettering-on-message-expiration \
+--enable-duplicate-detection # https://learn.microsoft.com/en-us/azure/service-bus-messaging/duplicate-detection#how-it-works
 
 # Get connection string
 CONNECTION_STRING=$(az servicebus namespace \
@@ -33,6 +35,8 @@ echo "CONN_STRING=$CONNECTION_STRING" > .env
 echo "QUEUE_NAME=$QUEUE_NAME" >> .env
 echo "TOPIC_NAME=$TOPIC_NAME" >> .env
 
+# Install dependencies
+npm install
 
 # Send a single message
 node 01.queue-demo.js
@@ -58,7 +62,7 @@ az servicebus topic create \
 --name $TOPIC_NAME
 
 # Create a subscription 
-SUBSCRIPTION_NAME="simple-subscription"
+SUBSCRIPTION_NAME="basic-subscription"
 
 az servicebus topic subscription create \
 --resource-group $RESOURCE_GROUP \
