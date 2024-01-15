@@ -48,8 +48,7 @@ async function main() {
 
         // Send a single message
         await sender.sendMessages({
-            contentType: "application/json",
-            body: "Hello World",
+            contentType: "application/json",            
             subject: "My favorite hero",
             body: "Batman is Bruce Wayne",
             timeToLive: 2 * 60 * 1000 // expires in 2 minutes
